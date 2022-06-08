@@ -16,7 +16,8 @@
 
 ## Dependencies
 
-- `bash`, `curl`, `tar`: generic POSIX utilities.
+- `bash`, `curl`, `tar`: generic POSIX utilities,
+- a JDK 11+ for Quarkus (you can install one using [asdf-java](https://github.com/halcyon/asdf-java)).
 
 ## Install
 
