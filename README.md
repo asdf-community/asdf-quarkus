@@ -3,7 +3,7 @@
 # asdf-quarkus [![Build](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/build.yml/badge.svg)](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/build.yml) [![Lint](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/lint.yml/badge.svg)](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/lint.yml)
 
 
-[quarkus](https://quarkus.io/) plugin for the [asdf version manager](https://asdf-vm.com).
+[Quarkus CLI](https://quarkus.io/guides/cli-tooling) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 

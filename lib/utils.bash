@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for quarkus.
 GH_REPO="https://github.com/quarkusio/quarkus"
 TOOL_NAME="quarkus"
 TOOL_TEST="quarkus --help"
@@ -31,18 +30,17 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-  # Change this function if quarkus has other means of determining installable versions.
-  list_github_tags
+  # NOTE:
+  # - Quarkus CLI is not published in CR releases,
+  # - Quarkus CLI has been published on GitHub from 2.6.2.Final onward
+  list_github_tags | grep '\.Final$' | grep -Ev '^1\.+|^2\.[0-5]\.+|^2\.6.[0-1]\.+'
 }
 
 download_release() {
   local version filename url
   version="$1"
   filename="$2"
-
-  # TODO: Adapt the release URL convention for quarkus
-  url="$GH_REPO/archive/v${version}.tar.gz"
+  url="$GH_REPO/releases/download/${version}/$TOOL_NAME-cli-${version}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -61,7 +59,6 @@ install_version() {
     mkdir -p "$install_path"
     cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-    # TODO: Asert quarkus executable exists.
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
     test -x "$install_path/bin/$tool_cmd" || fail "Expected $install_path/bin/$tool_cmd to be executable."
