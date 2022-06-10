@@ -10,6 +10,7 @@
 
 - [Dependencies](#dependencies)
 - [Install](#install)
+- [Completion](#completion)
 - [Implementation notes](#implementation-notes)
 - [Contributing](#contributing)
 - [License](#license)
@@ -43,21 +44,23 @@ asdf global quarkus latest
 quarkus --help
 ```
 
-Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
-install & manage versions.
+Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to install & manage versions.
+
+## Completion
+
+Quarkus command completion is not managed by this plugin. Check the [Quarkus CLI documentation](https://quarkus.io/guides/cli-tooling#shell-autocomplete-and-aliases) for instructions on how to configure it.
 
 ## Implementation notes
 
 This plugin downloads Quarkus CLI from [GitHub releases of the Quarkus project](https://github.com/quarkusio/quarkus/releases).
 
-Quarkus CLI releases are found using the [Quarkus project's tags](https://github.com/quarkusio/quarkus/tags)
-from version 2.6.2. Before this version Quarkus CLI did not exist or was not published on GitHub releases.
+Quarkus CLI releases are found using the [Quarkus project's tags](https://github.com/quarkusio/quarkus/tags) from version 2.6.2. Before this version Quarkus CLI did not exist or was not published on GitHub releases.
+
+Note that Quarkus CLI releases are meant to be backward compatible. [You are encouraged to always use the latest release](https://groups.google.com/g/quarkus-dev/c/R_CZ7My4Rxc/m/WuxnSTjGBQAJ).
 
 ## Contributing
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
-
-[Thanks goes to these contributors](https://github.com/marcwrobel/asdf-quarkus/graphs/contributors)!
 
 ## License
 
