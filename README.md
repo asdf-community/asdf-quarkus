@@ -25,6 +25,8 @@
 Plugin:
 
 ```shell
+asdf plugin add quarkus
+# or
 asdf plugin add quarkus https://github.com/marcwrobel/asdf-quarkus.git
 ```
 
