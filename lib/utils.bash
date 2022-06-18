@@ -26,14 +26,13 @@ sort_versions() {
 list_all_versions() {
   local url="https://api.github.com/repos/$GH_REPO/releases"
   local jq_filter='.[] | select (.prerelease == false) | select (any(.assets[].name; . | startswith("quarkus-cli"))) | .tag_name'
-  curl "${curl_opts[@]}" "$url" | jq -r "$jq_filter"
+  curl "${curl_opts[@]}" "$url" | jq -r "$jq_filter" || fail "Could not fetch versions from $url"
 }
 
 download_release() {
-  local version filename url
-  version="$1"
-  filename="$2"
-  url="https://github.com/$GH_REPO/releases/download/${version}/$TOOL_NAME-cli-${version}.tar.gz"
+  local version="$1"
+  local filename="$2"
+  local url="https://github.com/$GH_REPO/releases/download/${version}/$TOOL_NAME-cli-${version}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -52,8 +51,7 @@ install_version() {
     mkdir -p "$install_path"
     cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-    local tool_cmd
-    tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+    local tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
     test -x "$install_path/bin/$tool_cmd" || fail "Expected $install_path/bin/$tool_cmd to be executable."
 
     echo "$TOOL_NAME $version installation was successful!"
