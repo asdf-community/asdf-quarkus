@@ -11,14 +11,18 @@
 - [Dependencies](#dependencies)
 - [Install](#install)
 - [Completion](#completion)
-- [Implementation notes](#implementation-notes)
+- [Notes](#notes)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Dependencies
 
+Install dependencies :
 - `bash`, `curl`, `tar`: generic POSIX utilities,
-- a JDK 11+ for Quarkus (you can install one using [asdf-java](https://github.com/halcyon/asdf-java)).
+- [`jq`](https://stedolan.github.io/jq/) : a lightweight and flexible command-line JSON processor.
+
+Quarkus dependencies :
+- JDK 11 (or greater) : you can install one using [asdf-java](https://github.com/halcyon/asdf-java).
 
 ## Install
 
@@ -52,13 +56,13 @@ Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on ho
 
 Quarkus command completion is not managed by this plugin. Check the [Quarkus CLI documentation](https://quarkus.io/guides/cli-tooling#shell-autocomplete-and-aliases) for instructions on how to configure it.
 
-## Implementation notes
+## Notes
 
-This plugin downloads Quarkus CLI from [GitHub releases of the Quarkus project](https://github.com/quarkusio/quarkus/releases).
+This plugin downloads Quarkus CLI from [GitHub releases of the Quarkus project](https://github.com/quarkusio/quarkus/releases) and only releases containing a Quarkus CLI `tar.gz` file are considered.
 
-Quarkus CLI releases are found using the [Quarkus project's tags](https://github.com/quarkusio/quarkus/tags) from version 2.6.2. Before this version Quarkus CLI did not exist or was not published on GitHub releases.
+This plugin uses the GitHub API to retrieve Quarkus CLI releases. If you reach the limit you may consider declaring a `GITHUB_API_TOKEN` environment variables [with a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to increase it. Take a look at [the GitHub documentation](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) for more information about GitHub API rate limiting.
 
-Note that Quarkus CLI releases are meant to be backward compatible. [You are encouraged to always use the latest release](https://groups.google.com/g/quarkus-dev/c/R_CZ7My4Rxc/m/WuxnSTjGBQAJ).
+Quarkus CLI releases are meant to be backward compatible. [You are encouraged to always use the latest release](https://groups.google.com/g/quarkus-dev/c/R_CZ7My4Rxc/m/WuxnSTjGBQAJ).
 
 ## Contributing
 

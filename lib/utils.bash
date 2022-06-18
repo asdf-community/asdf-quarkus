@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-GH_REPO="https://github.com/quarkusio/quarkus"
+GH_REPO="quarkusio/quarkus"
 TOOL_NAME="quarkus"
 TOOL_TEST="quarkus --help"
 
@@ -13,7 +13,7 @@ fail() {
 
 curl_opts=(-fsSL)
 
-# NOTE: You might want to remove this if quarkus is not hosted on GitHub releases.
+# https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
   curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
 fi
@@ -23,24 +23,17 @@ sort_versions() {
     LC_ALL=C sort -t. -k 1,1 -k 2,2n -k 3,3n -k 4,4n -k 5,5n | awk '{print $2}'
 }
 
-list_github_tags() {
-  git ls-remote --tags --refs "$GH_REPO" |
-    grep -o 'refs/tags/.*' | cut -d/ -f3- |
-    sed 's/^v//' # NOTE: You might want to adapt this sed to remove non-version strings from tags
-}
-
 list_all_versions() {
-  # NOTE:
-  # - Quarkus CLI is not published in CR releases,
-  # - Quarkus CLI has been published on GitHub from 2.6.2.Final onward
-  list_github_tags | grep '\.Final$' | grep -Ev '^1\.+|^2\.[0-5]\.+|^2\.6.[0-1]\.+'
+  local url="https://api.github.com/repos/$GH_REPO/releases"
+  local jq_filter='.[] | select (.prerelease == false) | select (any(.assets[].name; . | startswith("quarkus-cli"))) | .tag_name'
+  curl "${curl_opts[@]}" "$url" | jq -r "$jq_filter"
 }
 
 download_release() {
   local version filename url
   version="$1"
   filename="$2"
-  url="$GH_REPO/releases/download/${version}/$TOOL_NAME-cli-${version}.tar.gz"
+  url="https://github.com/$GH_REPO/releases/download/${version}/$TOOL_NAME-cli-${version}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
