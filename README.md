@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-quarkus [![Build](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/build.yml/badge.svg)](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/build.yml) [![Lint](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/lint.yml/badge.svg)](https://github.com/marcwrobel/asdf-quarkus/actions/workflows/lint.yml) [![GitHub license](https://img.shields.io/github/license/marcwrobel/asdf-quarkus)](https://github.com/marcwrobel/asdf-quarkus/blob/master/LICENSE)
+# asdf-quarkus [![Build](https://github.com/asdf-community/asdf-quarkus/actions/workflows/build.yml/badge.svg)](https://github.com/asdf-community/asdf-quarkus/actions/workflows/build.yml) [![Lint](https://github.com/asdf-community/asdf-quarkus/actions/workflows/lint.yml/badge.svg)](https://github.com/asdf-community/asdf-quarkus/actions/workflows/lint.yml) [![GitHub license](https://img.shields.io/github/license/asdf-community/asdf-quarkus)](https://github.com/asdf-community/asdf-quarkus/blob/master/LICENSE)
 
 [Quarkus CLI](https://quarkus.io/guides/cli-tooling) plugin for the [asdf version manager](https://asdf-vm.com).
 
@@ -31,7 +31,7 @@ Plugin:
 ```shell
 asdf plugin add quarkus
 # or
-asdf plugin add quarkus https://github.com/marcwrobel/asdf-quarkus.git
+asdf plugin add quarkus https://github.com/asdf-community/asdf-quarkus.git
 ```
 
 quarkus:
@@ -70,4 +70,4 @@ Contributions of any kind welcome! See the [contributing guide](contributing.md)
 
 ## License
 
-See [LICENSE](LICENSE) © [Marc Wrobel](https://github.com/marcwrobel/)
+Licensed under the [MIT License](/LICENSE).
