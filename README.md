@@ -29,9 +29,9 @@ Quarkus dependencies :
 Plugin:
 
 ```shell
-asdf plugin add quarkus
-# or
 asdf plugin add quarkus https://github.com/asdf-community/asdf-quarkus.git
+# or
+asdf plugin add quarkus
 ```
 
 quarkus:
