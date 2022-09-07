@@ -18,8 +18,8 @@
 ## Dependencies
 
 Install dependencies :
-- `bash`, `curl`, `tar`: generic POSIX utilities,
-- [`jq`](https://stedolan.github.io/jq/) : a lightweight and flexible command-line JSON processor.
+- `bash`, `curl`, `tar`, `shasum`: generic utilities,
+- [`jq`](https://stedolan.github.io/jq/): a lightweight and flexible command-line JSON processor.
 
 Quarkus dependencies :
 - JDK 11 (or greater) : you can install one using [asdf-java](https://github.com/halcyon/asdf-java).

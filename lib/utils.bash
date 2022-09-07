@@ -38,6 +38,23 @@ download_release() {
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
+download_checksum() {
+  local version="$1"
+  local filename="$2"
+  local url="https://github.com/$GH_REPO/releases/download/${version}/checksums_sha256.txt"
+
+  echo "* Downloading $TOOL_NAME release $version checksums..."
+  curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+}
+
+verify_checksum() {
+  local checksums_filename="$1"
+  (
+    cd "$(dirname "$checksums_filename")"
+    shasum -a 256 --check --ignore-missing --strict "$checksums_filename"
+  )
+}
+
 install_version() {
   local install_type="$1"
   local version="$2"
