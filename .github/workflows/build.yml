@@ -25,6 +25,6 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
       - name: asdf_plugin_test
-        uses: asdf-vm/actions/plugin-test@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
+        uses: asdf-vm/actions/plugin-test@2368b9def7a1194d67ae0afd9cbbd01e15f658a0 # v2.0.0
         with:
           command: quarkus --help
