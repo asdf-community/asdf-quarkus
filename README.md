@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-quarkus [![Build](https://github.com/asdf-community/asdf-quarkus/actions/workflows/build.yml/badge.svg)](https://github.com/asdf-community/asdf-quarkus/actions/workflows/build.yml) [![Lint](https://github.com/asdf-community/asdf-quarkus/actions/workflows/lint.yml/badge.svg)](https://github.com/asdf-community/asdf-quarkus/actions/workflows/lint.yml) [![GitHub license](https://img.shields.io/github/license/asdf-community/asdf-quarkus)](https://github.com/asdf-community/asdf-quarkus/blob/master/LICENSE)
+# asdf-quarkus [![Build](https://github.com/asdf-community/asdf-quarkus/actions/workflows/workflow.yml/badge.svg)](https://github.com/asdf-community/asdf-quarkus/actions/workflows/workflow.yml) [![GitHub license](https://img.shields.io/github/license/asdf-community/asdf-quarkus)](https://github.com/asdf-community/asdf-quarkus/blob/master/LICENSE)
 
 [Quarkus CLI](https://quarkus.io/guides/cli-tooling) plugin for the [asdf version manager](https://asdf-vm.com).
 
@@ -18,10 +18,12 @@
 ## Dependencies
 
 Install dependencies :
+
 - `bash`, `curl`, `tar`, `shasum`: generic utilities,
 - [`jq`](https://stedolan.github.io/jq/): a lightweight and flexible command-line JSON processor.
 
 Quarkus dependencies :
+
 - JDK 11 (or greater) : you can install one using [asdf-java](https://github.com/halcyon/asdf-java).
 
 ## Install
