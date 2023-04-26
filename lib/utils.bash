@@ -51,7 +51,15 @@ verify_checksum() {
   local checksums_filename="$1"
   (
     cd "$(dirname "$checksums_filename")"
-    shasum -a 256 --check --ignore-missing --strict "$checksums_filename"
+    if command -v shasum >/dev/null; then
+      shasum -a 256 --check --ignore-missing --strict "$checksums_filename"
+    elif command -v sha256sum >/dev/null; then
+      sha256sum --check --ignore-missing --strict "$checksums_filename"
+    else
+      echo "Neither shasum nor sha256sum was found!"
+      exit 10
+    fi
+
   )
 }
 
